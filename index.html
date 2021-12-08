@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zadanko Ajax</title>
     <style>
-        
+        .gory{
+            background-color: #f4f5f6;
+            display: flex;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .user > ul{
+            list-style: none;
+        }
     </style>
 </head>
 <body>
     <button id="przycisk">Klikej synu</button>
     <h1>Góry w Polsce</h1>
-    <div id="gory"></div>
+    <div id="gory1"></div>
     <script>
         document.getElementById("przycisk").addEventListener("click",zaladujGory);
         function zaladujGory(){
@@ -25,15 +33,17 @@
                     var output = '';
                     for(let i in gory){
                        output += `
+                       <div class="gory">
                        <img src="${gory[i].img}" width="90" height="90" />
                         <ul>
                             <li>ID: ${gory[i].id}</li>
                             <li>TITLE: ${gory[i].title}</li>
                             <li>NAME: ${gory[i].name}</li>
                         </ul>
+                        </div>
                        `; 
                     }
-                    document.getElementById("gory").innerHTML = output;
+                    document.getElementById("gory1").innerHTML = output;
                 }
             }
             xhr.send();
