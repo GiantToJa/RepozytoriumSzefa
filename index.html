@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanko Ajax</title>
+</head>
+<body>
+    <button id="przycisk"></button>
+    <h1>Góry w Polsce</h1>
+    <div id="gory"></div>
+    <script>
+        document.getElementById("przycisk").addEventListener("click",zaladujGory);
+        function zaladujGory(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET','gory.json',true);
+
+            xhr.onload = function(){
+                if(this.status == 200){
+                    var gory = JSON.parse(this.responseText);
+                    var output = '';
+                    for(let i in gory){
+                       output += `
+                       <img src="${gory[i].img}" width="70" height="70" />
+                        <ul>
+                            <li>ID: ${gory[i].id}</li>
+                            <li>TITLE: ${gory[i].title}</li>
+                            <li>NAME: ${gory[i].name}</li>
+                        </ul>
+                       `; 
+                    }
+                    document.getElementById("gory").innerHTML = output;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
