@@ -7,7 +7,7 @@
     <title>Zadanko Ajax</title>
 </head>
 <body>
-    <button id="przycisk"></button>
+    <button id="przycisk">Klikej synu</button>
     <h1>Góry w Polsce</h1>
     <div id="gory"></div>
     <script>
@@ -33,6 +33,7 @@
                     document.getElementById("gory").innerHTML = output;
                 }
             }
+            xhr.send();
         }
     </script>
 </body>
